@@ -68,6 +68,11 @@ and the Java jar performs request validation, file reading, decoding, range
 handling, and diagnostics. Node.js-only conveniences such as helper-based runtime
 selection, result formatting, and bundle tests are unavailable.
 
+For AI agents, Java-only mode means the agent must read the Markdown
+instructions and prepare `request.json` explicitly before running the jar. If a
+repo-local `.mikusoft/miku-readfile.json` exists, copy the applicable settings
+such as `encoding` into `request.json` according to the documented precedence.
+
 Expected runtime artifact names:
 
 - `skills/miku-readfile/runtime/miku-readfile-<version>.jar`
