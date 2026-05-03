@@ -236,8 +236,29 @@ Test expectations:
 - [x] State that Java direct mode still uses the Java runtime for request
   validation, root-boundary checks, file reading, UTF-8 / Shift_JIS decoding,
   range extraction, and diagnostics.
+- [x] Document the operating assumption that, when Node.js helpers are
+  unavailable, the agent reads `SKILL.md` / references and manually prepares
+  `request.json` for direct Java execution.
 - [ ] Keep future documentation changes from implying that Node.js helpers are
   required for Java runtime use.
+
+## Repo-Local Config
+
+- [x] Document `.mikusoft/miku-readfile.json` as the repo-local config file in
+  `docs/miku-readfile-skills-config.md`.
+- [x] Define encoding precedence:
+  - request `encoding`
+  - repo root `.mikusoft/miku-readfile.json`
+  - runtime default
+- [x] Document Java-only behavior where config values are copied into
+  `request.json` manually.
+- [x] Document that, in Java-only mode, the agent must apply
+  `.mikusoft/miku-readfile.json` guidance manually when preparing
+  `request.json`.
+- [ ] Implement Node.js helper support for reading `.mikusoft/miku-readfile.json`
+  and merging it into request JSON.
+- [ ] Consider upstream Java runtime support for loading
+  `.mikusoft/miku-readfile.json` directly.
 
 ## Verification Commands
 

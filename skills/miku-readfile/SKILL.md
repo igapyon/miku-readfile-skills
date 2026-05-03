@@ -123,6 +123,17 @@ In Java-only mode, follow this `SKILL.md` and the references manually. The Java
 runtime remains responsible for request validation, root-boundary checks, file
 reading, UTF-8 / Shift_JIS decoding, range extraction, and diagnostics.
 
+When Node.js helpers are unavailable, the agent must do the helper work
+explicitly:
+
+1. read [references/workflow/readfile-workflow.md](references/workflow/readfile-workflow.md)
+2. check whether the target repository has `.mikusoft/miku-readfile.json`
+3. prepare `request.json` with explicit `version`, `root`, `files`, and any
+   required `encoding`
+4. copy repo-local config values into `request.json` when needed
+5. run the Java jar directly
+6. inspect `result.json` and report diagnostics without hiding runtime messages
+
 ## Error Handling
 
 Treat missing runtime artifacts, invalid JSON request shape, inaccessible root

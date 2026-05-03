@@ -28,6 +28,29 @@ java -jar skills/miku-readfile/runtime/miku-readfile-<version>.jar < request.jso
 Then inspect `result.json`. The runtime result is the authoritative artifact.
 The helper-generated summary is a convenience, not a required product artifact.
 
+Agent checklist for Java-only mode:
+
+1. Read this workflow and the config specification before building the request.
+2. Use the selected repository root as request `root`.
+3. Use only root-relative paths in `files`.
+4. If `.mikusoft/miku-readfile.json` exists under the selected root, copy the
+   applicable `encoding` policy into `request.json` unless the request already
+   has explicit `encoding`.
+5. Keep `range` and `limits` narrow when they are needed.
+6. Run the Java command.
+7. Treat `result.json` as the authoritative artifact and inspect `ok`,
+   `summary`, `files`, and `diagnostics`.
+
+Minimal Java-only request:
+
+```json
+{
+  "version": 1,
+  "root": ".",
+  "files": ["README.md"]
+}
+```
+
 ## Repository-External Roots
 
 Before reading outside the current repository or declared workspace, ask for
